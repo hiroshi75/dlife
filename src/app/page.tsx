@@ -108,30 +108,30 @@ export default function Home() {
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold text-center mb-8 text-foreground">Conway&apos;s Game of Life</h1>
         
-        <div className="flex justify-center gap-4 mb-8">
+        <div className="flex items-center justify-center space-x-2 mb-4">
           <button
-            className="flex items-center gap-2 px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors shadow-md"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm border border-gray-200 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
             onClick={() => setIsRunning(!isRunning)}
           >
-            {isRunning ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
+            {isRunning ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
             {isRunning ? "一時停止" : "開始"}
           </button>
           <button
-            className="flex items-center gap-2 px-6 py-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors shadow-md"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm border border-gray-200 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
             onClick={resetGrid}
           >
-            <RefreshCw className="w-5 h-5" />
+            <RefreshCw className="w-4 h-4" />
             リセット
           </button>
           <button
-            className="flex items-center gap-2 px-6 py-3 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors shadow-md"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm border border-gray-200 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
             onClick={clearGrid}
           >
             クリア
           </button>
 
           <select
-            className="px-4 py-3 rounded-lg bg-white text-black shadow-md"
+            className="px-3 py-1.5 text-sm border border-gray-200 rounded-md text-gray-700 bg-white hover:bg-gray-50 transition-colors"
             onChange={(e) => applyPattern(e.target.value)}
           >
             <option value="">パターンを選択</option>
