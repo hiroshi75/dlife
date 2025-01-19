@@ -71,6 +71,13 @@ export default function Home() {
     setIsRunning(false);
   };
 
+  const clearGrid = () => {
+    setIsRunning(false);
+    setGrid(Array(ROWS).fill(null).map(() =>
+      Array(COLS).fill(false)
+    ));
+  };
+
   const applyPattern = (patternName: string) => {
     if (!patternName) return;
     let patternGrid: Pattern | null = null;
@@ -115,6 +122,12 @@ export default function Home() {
           >
             <RefreshCw className="w-5 h-5" />
             リセット
+          </button>
+          <button
+            className="flex items-center gap-2 px-6 py-3 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors shadow-md"
+            onClick={clearGrid}
+          >
+            クリア
           </button>
 
           <select
