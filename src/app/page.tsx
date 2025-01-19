@@ -127,18 +127,30 @@ export default function Home() {
           </select>
         </div>
 
-        <div className="grid grid-cols-[80] gap-px bg-gray-300 p-px w-fit mx-auto">
-          {grid.map((row, i) => (
+        <div 
+            className="grid gap-0 mx-auto overflow-hidden"
+            style={{
+              width: '1280px',
+              height: '640px',
+              backgroundColor: '#ff0000',
+              display: 'grid',
+              gridTemplateColumns: 'repeat(80, 16px)',
+              gridTemplateRows: 'repeat(40, 16px)'
+            }}>
+          {grid.map((row, i) => 
             row.map((cell, j) => (
               <div
                 key={`${i}-${j}`}
-                className={`w-4 h-4 cursor-pointer transition-colors border border-gray-300 ${
-                  cell ? "bg-foreground" : "bg-background"
-                }`}
+                style={{
+                  width: '16px',
+                  height: '16px',
+                  backgroundColor: cell ? '#000000' : '#ffffff',
+                  border: '1px solid #cccccc'
+                }}
                 onClick={() => handleCellClick(i, j)}
               />
             ))
-          ))}
+          )}
         </div>
 
         <div className="mt-8 text-center text-sm text-gray-600 dark:text-gray-400">
