@@ -2,13 +2,15 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { Play, Pause, RefreshCw } from "lucide-react";
+import { GLIDER, GLIDER_GUN, Pattern } from "./patterns";
 
-const GRID_SIZE = 30;
+const ROWS = 40;
+const COLS = 80;
 
 export default function Home() {
   const [grid, setGrid] = useState(() => {
-    return Array(GRID_SIZE).fill(null).map(() =>
-      Array(GRID_SIZE).fill(false)
+    return Array(ROWS).fill(null).map(() =>
+      Array(COLS).fill(false)
     );
   });
 
@@ -29,7 +31,7 @@ export default function Home() {
                 if (di === 0 && dj === 0) continue;
                 const newI = i + di;
                 const newJ = j + dj;
-                if (newI >= 0 && newI < GRID_SIZE && newJ >= 0 && newJ < GRID_SIZE) {
+                if (newI >= 0 && newI < ROWS && newJ >= 0 && newJ < COLS) {
                   neighbors += currentGrid[newI][newJ] ? 1 : 0;
                 }
               }
@@ -63,10 +65,35 @@ export default function Home() {
   };
 
   const resetGrid = () => {
-    setGrid(Array(GRID_SIZE).fill(null).map(() =>
-      Array(GRID_SIZE).fill(false)
+    setGrid(Array(ROWS).fill(null).map(() =>
+      Array(COLS).fill(false)
     ));
     setIsRunning(false);
+  };
+
+  const applyPattern = (patternName: string) => {
+    if (!patternName) return;
+    let patternGrid: Pattern | null = null;
+    
+    if (patternName === "GLIDER") {
+      patternGrid = GLIDER;
+    } else if (patternName === "GLIDER_GUN") {
+      patternGrid = GLIDER_GUN;
+    }
+
+    if (!patternGrid) return;
+
+    setGrid((oldGrid) => {
+      const newGrid = oldGrid.map(row => [...row]);
+      for (let i = 0; i < patternGrid!.length; i++) {
+        for (let j = 0; j < patternGrid![i].length; j++) {
+          if (i < newGrid.length && j < newGrid[i].length) {
+            newGrid[i][j] = patternGrid![i][j];
+          }
+        }
+      }
+      return newGrid;
+    });
   };
 
   return (
@@ -89,14 +116,23 @@ export default function Home() {
             <RefreshCw className="w-5 h-5" />
             リセット
           </button>
+
+          <select
+            className="px-4 py-3 rounded-lg bg-white text-black shadow-md"
+            onChange={(e) => applyPattern(e.target.value)}
+          >
+            <option value="">パターンを選択</option>
+            <option value="GLIDER">グラインダー</option>
+            <option value="GLIDER_GUN">グラインダーガン</option>
+          </select>
         </div>
 
-        <div className="grid grid-cols-30 gap-px bg-gray-300 p-px w-fit mx-auto">
+        <div className="grid grid-cols-[80] gap-px bg-gray-300 p-px w-fit mx-auto">
           {grid.map((row, i) => (
             row.map((cell, j) => (
               <div
                 key={`${i}-${j}`}
-                className={`w-6 h-6 cursor-pointer transition-colors border border-gray-300 ${
+                className={`w-4 h-4 cursor-pointer transition-colors border border-gray-300 ${
                   cell ? "bg-foreground" : "bg-background"
                 }`}
                 onClick={() => handleCellClick(i, j)}
