@@ -13,7 +13,7 @@ export default {
         foreground: "var(--foreground)",
       },
       gridTemplateColumns: {
-        '80': 'repeat(80, minmax(0, 1fr))',
+        '80': 'repeat(80, minmax(16px, 16px))',
       },
     },
   },
