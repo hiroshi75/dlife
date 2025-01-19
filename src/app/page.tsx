@@ -127,7 +127,7 @@ export default function Home() {
           </select>
         </div>
 
-        <div className="grid grid-cols-[80] gap-px bg-gray-300 p-px w-fit mx-auto">
+        <div className="grid grid-cols-80 gap-px bg-gray-300 p-px w-fit mx-auto">
           {grid.map((row, i) => (
             row.map((cell, j) => (
               <div
