@@ -1,4 +1,7 @@
 import React from 'react';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
+import { CssBaseline } from '@mui/material';
+import ThemeRegistry from './ThemeRegistry';
 
 export const metadata = {
   title: "Conway's Game of Life",
@@ -12,7 +15,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body>{children}</body>
+      <head>
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
+      </head>
+      <body>
+        <AppRouterCacheProvider>
+          <ThemeRegistry>
+            <CssBaseline />
+            {children}
+          </ThemeRegistry>
+        </AppRouterCacheProvider>
+      </body>
     </html>
   );
 }
