@@ -226,8 +226,8 @@ export default function Home() {
             }}
           >
             <MenuItem value="">パターンを選択</MenuItem>
-            <MenuItem value="GLIDER">グラインダー</MenuItem>
-            <MenuItem value="GLIDER_GUN">グラインダーガン</MenuItem>
+            <MenuItem value="GLIDER">グライダー</MenuItem>
+            <MenuItem value="GLIDER_GUN">グライダーガン</MenuItem>
           </Select>
         </Stack>
 
@@ -260,7 +260,12 @@ export default function Home() {
           )}
         </div>
 
-        <div className="mt-8 text-center text-sm text-gray-600 dark:text-gray-400">
+        <div 
+          className="mt-8 text-sm text-gray-600 dark:text-gray-400"
+          style={{
+            padding: '0 max(16px, calc((100% - (80 * 16px)) / 2))'
+          }}
+        >
           <p>セルをクリックして生命を配置し、開始ボタンを押してシミュレーションを実行します。</p>
           <p>黒いセルは生きているセル、白いセルは死んでいるセルを表します。</p>
         </div>
