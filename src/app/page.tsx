@@ -118,12 +118,12 @@ export default function Home() {
           component="h1"
           className={notoSansJP.className}
           sx={{
-            fontSize: { xs: '2.5rem', sm: '3rem', md: '3.5rem' },
+            fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
             fontWeight: 700,
             textAlign: 'center',
             color: '#1a1a1a',
             letterSpacing: '-0.03em',
-            marginBottom: '4rem',
+            marginBottom: '2rem',
             textTransform: 'none'
           }}
         >
@@ -136,7 +136,7 @@ export default function Home() {
           justifyContent="center" 
           alignItems="center" 
           sx={{ 
-            mb: 6,
+            mb: 4,
             '& .MuiButton-root': {
               borderRadius: 1,
               fontWeight: 500,
@@ -234,12 +234,14 @@ export default function Home() {
         <div 
           className="grid gap-0 mx-auto overflow-hidden"
           style={{
-            width: '1280px',
-            height: '640px',
+            width: 'calc(80 * 16px)',
+            maxWidth: '100%',
+            height: 'calc(40 * 16px)',
             backgroundColor: '#ffffff',
             display: 'grid',
             gridTemplateColumns: 'repeat(80, 16px)',
-            gridTemplateRows: 'repeat(40, 16px)'
+            gridTemplateRows: 'repeat(40, 16px)',
+            padding: '0 max(16px, calc((100% - (80 * 16px)) / 2))'
           }}
         >
           {grid.map((row, i) => 
