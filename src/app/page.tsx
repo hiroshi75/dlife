@@ -4,7 +4,6 @@ import { useCallback, useEffect, useState } from "react";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import RefreshIcon from '@mui/icons-material/Refresh';
-import ClearIcon from '@mui/icons-material/Clear';
 import { Typography, Button, Select, MenuItem, Stack } from "@mui/material";
 import { GLIDER, GLIDER_GUN, Pattern } from "./patterns";
 import { notoSansJP } from "./ThemeRegistry";
@@ -76,13 +75,6 @@ export default function Home() {
       Array(COLS).fill(false)
     ));
     setIsRunning(false);
-  };
-
-  const clearGrid = () => {
-    setIsRunning(false);
-    setGrid(Array(ROWS).fill(null).map(() =>
-      Array(COLS).fill(false)
-    ));
   };
 
   const applyPattern = (patternName: string) => {
@@ -188,23 +180,7 @@ export default function Home() {
             >
               リセット
             </Button>
-            <Button
-              variant="outlined"
-              color="primary"
-              startIcon={<ClearIcon sx={{ fontSize: 20 }} />}
-              onClick={clearGrid}
-              sx={{
-                '& .MuiButton-startIcon': {
-                  marginRight: 1.5,
-                  marginLeft: -0.5
-                },
-                '&:hover': {
-                  backgroundColor: 'rgba(25, 118, 210, 0.08)'
-                }
-              }}
-            >
-              クリア
-            </Button>
+
           </Stack>
 
           <Select
